@@ -37,7 +37,7 @@ li {
     cursor: pointer;
     box-shadow: 0 3px 2px -2px rgb(0 0 0 /13%); 
     text-align: left;
-    margin: 0 10px;
+    margin: 10px 10px;
 
 }
 
@@ -54,6 +54,24 @@ li {
     height: 96px;
     margin: 0 auto;
     
+}
+
+.text_seikai{
+    display:none;
+    font-weight: 600;
+}
+
+.text_seikai::after{
+    /* display: none; */
+    margin-top: 10px;
+    width:  40px;
+    height: 2px;
+    background-color: #287dff;
+    content: ''; 
+}
+
+.correct_name{
+    display:none;
 }
 
 /* 真ん中に寄せる系 */
