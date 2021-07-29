@@ -1,4 +1,13 @@
- 
+.correct {
+    background-color: #287dff;
+    color: white;
+}
+
+.answer_box {
+    background-color: red;
+}
+
+
 .question_area:after { 
     display: block;
     margin-top: 10px;
@@ -56,5 +65,4 @@ li {
      .container {
          margin:0 auto; 
          width:50%;
-     } 
-     /*divで親要素を作ってその親要素にcontainerという名前をつける。このふたつはどっちかを書かないと左寄りになってたからどっちも必要
+     } /*divで親要素を作ってその親要素にcontainerという名前をつける。このふたつはどっちかを書かないと左寄りになってたからどっちも必要 *
