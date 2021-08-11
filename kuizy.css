@@ -95,7 +95,7 @@ li {
 .text_fuseikai:after{
     display: block;
     margin-top: 0px;
-    width:  50px;
+    width:  60px;
     height: 2px;
     background-color:red;
     content: ''; 
