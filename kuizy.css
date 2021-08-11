@@ -1,3 +1,7 @@
+.question_area {
+    font-weight: 600;
+}
+
 .question_area:after { 
     display: block;
     margin-top: 10px;
@@ -31,13 +35,13 @@
 li {
     list-style-type: none;
     border: 1px solid #ebebeb;
-    padding:13px;
-    width: 500px;
+    padding:20px 13px 13px 13px;
     font-weight: 600;
     cursor: pointer;
     box-shadow: 0 3px 2px -2px rgb(0 0 0 /13%); 
     text-align: left;
-    margin: 10px 10px;
+    margin: 10px 0;
+    height: 20px;
 
 }
 
@@ -46,32 +50,60 @@ li {
     color: white;
 }
 
-.result_box {
+.correct_box {
     display: none;
     background-color:hsl(0, 0%, 93%);
-    padding: 0 10px 0 5px;
-    width: 540px;
-    height: 96px;
+    padding: 15px;
+    height: 60px;
     margin: 0 auto;
     
 }
 
 .text_seikai{
-    display:none;
+    /* display:none; */
     font-weight: 600;
 }
 
-.text_seikai::after{
-    /* display: none; */
-    margin-top: 10px;
-    width:  40px;
+.text_seikai:after{
+    display: block;
+    margin-top: 0px;
+    width:  50px;
     height: 2px;
-    background-color: #287dff;
+    background-color:#287dff;
     content: ''; 
+    margin: 5px 0 10px 0;
 }
 
-.correct_name{
-    display:none;
+.fail{
+    background-color: red;
+    color: white;
+}
+
+.fail_box{
+    display: none;
+    background-color:hsl(0, 0%, 93%);
+    padding: 15px;
+    height: 60px;
+    margin: 0 auto;
+}
+
+.text_fuseikai{
+    /* display:none; */
+    font-weight: 600;
+}
+
+.text_fuseikai:after{
+    display: block;
+    margin-top: 0px;
+    width:  50px;
+    height: 2px;
+    background-color:red;
+    content: ''; 
+    margin: 5px 0 10px 0;
+}
+
+.question{
+    margin: 10px 0 10px 0;
 }
 
 /* 真ん中に寄せる系 */
