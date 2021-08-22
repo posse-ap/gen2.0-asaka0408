@@ -35,6 +35,8 @@ fail1.onclick = function () {
     correct.style.pointerEvents = 'none';
 }
 
+//間違いに関する関数
+
 fail2.onclick = function () {
     correct.classList.add("correct");
     fail2.classList.add('fail');
