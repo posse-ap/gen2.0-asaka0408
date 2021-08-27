@@ -4,7 +4,7 @@
 
 .question_area:after { 
     display: block;
-    margin-top: 10px;
+    margin-top: 15px;
     width:  120px;
     height: 2px;
     background-color: #00ab36;
@@ -109,7 +109,7 @@ li {
 /* 真ん中に寄せる系 */
 .container {
      margin:0 auto; 
-     width:50%;
+     width:70%;
 } /*divで親要素を作ってその親要素にcontainerという名前をつける。このふたつはどっちかを書かないと左寄りになってたからどっちも必要 *
 
 /* font-familyは字体 */

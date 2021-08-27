@@ -34,6 +34,7 @@ function noMoreClick () {
     fails.style.pointerEvents = 'none'; 
     correct.style.pointerEvents = 'none';
 }
+//ここでfailsを使ってもHTML要素になってて動いてくれない。forEachの中に入れるとエラーになったし、正解を押したときにまた動かすのか？？よくわからない、、、
     
 //箱を表示する
 
