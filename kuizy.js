@@ -1,54 +1,47 @@
 'use strict';
 
-let correct = document.getElementById("correct");
+//変数宣言
+let correct = document.getElementById("correctSelection");
+let correctBox = document.getElementById('correctBox');
+let failBox = document.getElementById('failBox');
+
+//正解を押したとき
 
 correct.onclick = function () {
-    correct.classList.add("correct");
-    showBox();
-    fail1.style.pointerEvents = 'none';
-    fail2.style.pointerEvents = 'none';
-    correct.style.pointerEvents = 'none';
+    correct.classList.add("correct_selection");
+    showCorrectBox();
+    noMoreClick();
 }
 
-let correctBox = document.getElementById('correctBox');
+//不正解を押したとき
 
-function showBox () {
+let fails = document.getElementsByClassName('fail_selections');
+fails = Array.from(fails);
+fails.forEach(fail => {
+    console.log(fail),
+    fail.onclick= function () {
+            correct.classList.add("correct_selection");
+            fail.classList.add('fail');
+            showFailBox();
+            noMoreClick();
+        }
+        
+});
+
+//ボタンを押せなくする
+
+function noMoreClick () {
+    fails.style.pointerEvents = 'none'; 
+    correct.style.pointerEvents = 'none';
+}
+    
+//箱を表示する
+
+function showCorrectBox () {
     correctBox.style.display = 'block';
 }
 
-
-
-
-// for (i = 1; i < 3; i++) {
-//     let fails = document.getElementById(`fail${i}`);
-// }
-
-let fail1 = document.getElementById('fail1');
-let fail2 = document.getElementById('fail2');
-
-fail1.onclick = function () {
-    correct.classList.add("correct");
-    fail1.classList.add('fail');
-    showBox2();
-    fail1.style.pointerEvents = 'none';
-    fail2.style.pointerEvents = 'none';
-    correct.style.pointerEvents = 'none';
-}
-
-//間違いに関する関数
-
-fail2.onclick = function () {
-    correct.classList.add("correct");
-    fail2.classList.add('fail');
-    showBox2();
-    fail1.style.pointerEvents = 'none';
-    fail2.style.pointerEvents = 'none';
-    correct.style.pointerEvents = 'none';
-}
-
-let failBox = document.getElementById('failBox');
-
-function showBox2 () {
+function showFailBox (){
     failBox.style.display = 'block';
 }
-
+      
