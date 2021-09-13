@@ -24,7 +24,7 @@ let currentNum = 0;
 
 //シャッフルについて
 
-questionArea.textContent = quizSet[currentNum].q; //ulの中に問題文が入る
+
 
 function shuffle(arr) {
     for (let terminalIndex = arr.length - 1; terminalIndex > 0; terminalIndex--) {
@@ -35,13 +35,40 @@ function shuffle(arr) {
     return arr;
 }
 
-const shuffledChoices = shuffle([...quizSet[currentNum].c]); //もとの配列はそのままにして入れ替えた配列を別のものとする？
+function checkAnswer (li, asaka) {
+    if (li.textContent === quizSet[currentNum].c[0]) {
+        li.classList.add('correct_selection');
+        showCorrectBox();
+    }else {
+        li.classList.add('fail_selections');
+        // asaka.classList.add('correct_selection');
+        showFailBox();
+        console.log(li);
+        
+    }
+}
 
-shuffledChoices.forEach(choice => {
-    const li = document.createElement('li');
-    li.textContent = choice;
-    choices.appendChild(li);
-});
+console.log(quizSet[currentNum].c[0]);
+
+function setQuiz () {
+    questionArea.textContent = quizSet[currentNum].q; //ulの中に問題文が入る
+
+    const shuffledChoices = shuffle([...quizSet[currentNum].c]); //もとの配列はそのままにして入れ替えた配列を別のものとする？
+
+    shuffledChoices.forEach(choice => {
+        const li = document.createElement('li');
+        li.textContent = choice;
+        li.addEventListener('click', () => {
+            checkAnswer(li);
+        })
+        //引数はカンマ区切りで何個もつけられる！！
+        //2個目の引数を設置したけど、紐付けしないといけなくて、でもforeachの中に新しいのは作れないからどうやって紐付けしたらいいか分からない。
+        choices.appendChild(li);
+    });
+}
+
+setQuiz();
+
 
 
 
@@ -51,8 +78,6 @@ shuffledChoices.forEach(choice => {
 // //正解を押したとき
 
 // correct.onclick = function () {
-//     correct.classList.add("correct_selection");
-//     showCorrectBox();
 //     noMoreClick();
 // }
 
@@ -74,18 +99,17 @@ shuffledChoices.forEach(choice => {
 // //ボタンを押せなくする
 
 // function noMoreClick () {
-//     fails.style.pointerEvents = 'none'; 
-//     correct.style.pointerEvents = 'none';
+//     li.style.pointerEvents = 'none';
 // }
 // //ここでfailsを使ってもHTML要素になってて動いてくれない。forEachの中に入れるとエラーになったし、正解を押したときにまた動かすのか？？よくわからない、、、
     
-// //箱を表示する
+//箱を表示する
 
-// function showCorrectBox () {
-//     correctBox.style.display = 'block';
-// }
+function showCorrectBox () {
+    correctBox.style.display = 'block';
+}
 
-// function showFailBox (){
-//     failBox.style.display = 'block';
-// }
+function showFailBox (){
+    failBox.style.display = 'block';
+}
       
