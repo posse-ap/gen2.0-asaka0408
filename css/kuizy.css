@@ -1,4 +1,6 @@
 .question_area {
+    margin-top: 5%;
+    margin-left: 18%;
     font-weight: 600;
 }
 
@@ -28,7 +30,7 @@
 
 .images{
     display:block;
-    width: 100%;
+    width: 80%;
     margin:auto
 }
 
@@ -40,8 +42,9 @@ li {
     cursor: pointer;
     box-shadow: 0 3px 2px -2px rgb(0 0 0 /13%); 
     text-align: left;
-    margin: 10px 0;
+    margin-left: 18%;
     height: 20px;
+    width: 60%;
 
 }
 
@@ -54,7 +57,7 @@ li {
     display: none;
     background-color:hsl(0, 0%, 93%);
     padding: 15px;
-    height: 60px;
+    height: 85px;
     margin: 0 auto;
     
 }
@@ -83,7 +86,7 @@ li {
     display: none;
     background-color:hsl(0, 0%, 93%);
     padding: 15px;
-    height: 60px;
+    height: 85px;
     margin: 0 auto;
 }
 
@@ -102,9 +105,9 @@ li {
     margin: 5px 0 10px 0;
 }
 
-.question{
+/* .question{
     margin: 10px 0 10px 0;
-}
+} */
 
 /* 真ん中に寄せる系 */
 .container {
