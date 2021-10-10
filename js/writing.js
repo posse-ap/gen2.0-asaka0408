@@ -20,8 +20,6 @@ function check(question_id, selection_id, valid_id) {
   answerlists.forEach( answerlist => {
     answerlist.style.pointerEvents = 'none';
   });
-
-//一度全て不正解で、正解なら上書き
  
 //正誤判定
   let answertext = document.getElementById('answertext_' + question_id);
@@ -35,7 +33,13 @@ function check(question_id, selection_id, valid_id) {
     answertext.innerText = '不正解。';
   }
   answerbox.style.display = 'block'
+
+  let selectiontext = document.getElementById('answerlist_' + question_id + '_' + selection_id);
+  let validtext = document.getElementById('answerlist_' + question_id + '_' + valid_id);
+  selectiontext.className = 'answer_invalid';
+  validtext.className = 'answer_valid';
 }
+
 
 function createQuestion(question_id, selection_list, valid_id) {
   let contents = '<div class="quiz">'
@@ -45,7 +49,8 @@ function createQuestion(question_id, selection_list, valid_id) {
   + '<ul>';
 
   selection_list.forEach(function(selection, index) {
-    contents += '<li id="answerlist_' + question_id + '_' + (index + 1) + '" name="answerlist_' + question_id + '" class="answerlist" onclick="check(' + question_id + ',' + (index+1) + ',' + valid_id + ')">'
+    contents += '<li id="answerlist_' + question_id + '_' + (index + 1)
+    + '" name="answerlist_' + question_id + '" class="answerlist" onclick="check(' + question_id + ',' + (index+1) + ',' + valid_id + ')">'
     + selection + '</li>';
   });
 
