@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>posse-webapp</title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/webapp.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header_logo_week">
+      <img src="../img/BE692566-F416-4E12-BB40-049BBBF38B19_4_5005_c.jpeg" alt="POSSEロゴ">
+      <p>4th week</p>
+    </div>
+
+    <button class="header_record_and_post_btn">記録・投稿</button>
+
+  </header>
+
+
+  <div class="page_container">
+    <div class="main_container">
+      <div class="time_bar_graf">
+        <ul class="time_container">
+          <li class="time_each">
+            <p class="time_each_title">Today</p><br>
+            <p class="time_each_hours">3</p><br>
+            <p class="time_each_unit">hour</p>
+          </li>
+          <li class="time_each">
+            <p class="time_each_title">Month</p><br>
+            <p class="time_each_hours">120</p><br>
+            <p class="time_each_unit">hour</p>
+          </li>
+          <li class="time_each">
+            <p class="time_each_title">Total</p><br>
+            <p class="time_each_hours">1348</p><br>
+            <p class="time_each_unit">hour</p>
+          </li>
+        </ul>
+        <div class="bar_graf">
+        <p>aaaaaa</p>
+        </div>
+      </div>
+
+      <ul class="sircle_graf_container">
+        <li class="sircle_graf_each">
+          <p class="sircle_graf_each_title">学習言語</p>
+        </li>
+        <li class="sircle_graf_each">
+          <p class="sircle_graf_each_title">学習コンテンツ</p>
+        </li>
+      </ul>
+
+    </div>
+
+    <div class="now_time_container">
+      <p class="now_time_flame">＜</p>
+      <p>2020年10月</p>
+      <p class="now_time_flame">＞</p>
+    </div>
+
+  </div>
+    
+  <section class="modal_container">
+    <form action="/" class="modal_form" name="modal_form">
+      <div class="modal_form_first">
+        <div class="modal_form_date">
+          <dt><label for="date">学習日</label></dt>
+          <dd><input id="date" type="text" name="date"></dd>
+        </div>
+        <div class="modal_form_contents">
+          <dt><label for="contents">学習コンテンツ（複数選択可）</label></dt>
+          <div class="modal_form_contents_selections">
+            <dd><input type="checkbox" name="contents">N予備校</dd>
+            <dd><input type="checkbox" name="contents">ドットインストール</dd>
+            <br>
+            <dd><input type="checkbox" name="contents">POSSE課題</dd>
+          </div>
+        </div>
+        <div class="modal_form_languages">
+          <dt><label for="languages">学習言語（複数選択可）</label></dt>
+          <div class="modal_form_languages_selections">
+            <dd><input type="checkbox" name="languages">HTML</dd>
+            <dd><input type="checkbox" name="languages">CSS</dd>
+            <dd><input type="checkbox" name="languages">JavaScript</dd>
+            <br>
+            <dd><input type="checkbox" name="languages">PHP</dd>
+            <dd><input type="checkbox" name="languages">Laravel</dd>
+            <dd><input type="checkbox" name="languages">SQL</dd>
+            <dd><input type="checkbox" name="languages">SHELL</dd>
+            <br>
+            <dd><input type="checkbox" name="languages">情報システム基礎知識（その他）</dd>
+          </div>
+        </div>
+      </div>
+      <div class="modal_form_second">
+        <div class="modal_form_hours">
+          <dt><label for="hours">学習時間</label></dt>
+          <dd><input id="hours" type="text" name="hours"></dd>
+        </div>
+          <div class="modal_form_twitter">
+          <dt><label for="twitter">Twitter用コメント</label></dt>
+          <dd><textarea name="twitter" id="twitter" cols="30" rows="10"></textarea></dd>
+          <dd class="modal_form_twitter_btn"><input type="radio">Twitterに自動投稿する</dd>
+        </div>
+      </div>
+    </form>
+
+    <button class="modal_record_and_post_btn">記録・投稿</button>
+  </section>
+</body>
+</html>
