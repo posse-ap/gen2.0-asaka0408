@@ -36,7 +36,14 @@ function closeModal() {
     options: {
       legend: {position: 'bottom'},
       maintainAspectRatio: false,
-      
+      layout: { //レイアウトの設定
+        padding: {
+          left: 30,
+          right: 30,
+          top: 0,
+          bottom: 50
+        }
+      }
     }
   });
 
@@ -44,21 +51,36 @@ function closeModal() {
   var sircleGrafContents= new Chart(ctx, {
     type: 'doughnut',
     data: {
-      labels: ["N予備校", "ドットインストール", "課題"], //データ項目のラベル
+      labels: ["N予備校", "ドットインストール", "POSSE課題",], //データ項目のラベル
       datasets: [{
         backgroundColor: [
           "#2d72b8",
           "#204be3",
-          "#55bbda"
+          "#55bbda",
         ],
         data: [40, 20, 40] //グラフのデータ
       }]
     },
     options: {
-      legend: {position: 'bottom'},
+      legend: {
+        position: 'bottom',
+        layout: {
+          padding: {
+            top: 100,
+          },
+        }
+      },
       maintainAspectRatio: false,
       title: {
         display: true,
+      },
+      layout: { //レイアウトの設定
+        padding: {
+          left: 30,
+          right: 30,
+          top: 0,
+          bottom: 120
+        }
       }
     }
   });
@@ -73,7 +95,7 @@ function closeModal() {
   var myBarChart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+      labels: ['', 2,'' ,4 ,'' , 6, '', 8, '', 10, '', 12, '', 14, '', 16, '', 18, '', 20, '', 26, '', 28, '', 30],
       datasets: [
         {
           label: 'hours',
@@ -94,14 +116,30 @@ function closeModal() {
           stacked: false,
           gridLines: {
             display: false
-          }
+          },
+          ticks: {
+            suggestedMax: 8,
+            suggestedMin: 0,
+            stepSize: 2,
+            callback: function (value, index, values) {
+                return value + 'h'
+            }
+        }
         }],
         xAxes: [{
           stacked: false,
           gridLines: {
-            display: false
-          }
-        }]
+            display: false,
+          },
+          ticks: {
+            stepSize: 2,
+            suggestedMax: 30,
+            suggestedMin: 1,
+            callback: function (value, index, values) {
+                return value + ''
+            }
+        }
+        }],
       },
     }
   });
