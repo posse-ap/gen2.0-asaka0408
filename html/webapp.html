@@ -7,6 +7,7 @@
   <title>posse-webapp</title>
   <link rel="stylesheet" href="../css/reset.css">
   <link rel="stylesheet" href="../css/webapp.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 </head>
 <body>
   <header class="header">
@@ -14,13 +15,14 @@
       <img src="../img/BE692566-F416-4E12-BB40-049BBBF38B19_4_5005_c.jpeg" alt="POSSEロゴ">
       <p>4th week</p>
     </div>
-
-    <button class="header_record_and_post_btn">記録・投稿</button>
+    
+    <button class="header_record_and_post_btn" onclick="showModal()">記録・投稿</button>
 
   </header>
 
 
   <div class="page_container">
+    <div id="pageBackground"></div>
     <div class="main_container">
       <div class="time_bar_graf">
         <ul class="time_container">
@@ -41,16 +43,21 @@
           </li>
         </ul>
         <div class="bar_graf">
-        <p>aaaaaa</p>
+          <canvas id="myBarChart"></canvas>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
         </div>
       </div>
 
       <ul class="sircle_graf_container">
         <li class="sircle_graf_each">
           <p class="sircle_graf_each_title">学習言語</p>
+          <canvas class="sircle_graf_each_graf" id="sircleGrafLanguages">
+          </canvas>
         </li>
         <li class="sircle_graf_each">
           <p class="sircle_graf_each_title">学習コンテンツ</p>
+          <canvas class="sircle_graf_each_graf" id="sircleGrafContents">
+          </canvas>
         </li>
       </ul>
 
@@ -64,12 +71,13 @@
 
   </div>
     
-  <section class="modal_container">
+  <section id="modalContainer" class="modal_container">
+    <span id="modalBackBtn" class="modal_back_btn" onclick="closeModal()"></span>
     <form action="/" class="modal_form" name="modal_form">
       <div class="modal_form_first">
         <div class="modal_form_date">
           <dt><label for="date">学習日</label></dt>
-          <dd><input id="date" type="text" name="date"></dd>
+          <dd><input id="date" type="date" name="date"></dd>
         </div>
         <div class="modal_form_contents">
           <dt><label for="contents">学習コンテンツ（複数選択可）</label></dt>
@@ -83,7 +91,8 @@
         <div class="modal_form_languages">
           <dt><label for="languages">学習言語（複数選択可）</label></dt>
           <div class="modal_form_languages_selections">
-            <dd><input type="checkbox" name="languages">HTML</dd>
+            <dd><input type="checkbox" name="languages">HTML</dd> 
+            <!-- テーブル（見出しと中身）とかの表で使うやつだからなくてもおけ -->
             <dd><input type="checkbox" name="languages">CSS</dd>
             <dd><input type="checkbox" name="languages">JavaScript</dd>
             <br>
@@ -111,5 +120,14 @@
 
     <button class="modal_record_and_post_btn">記録・投稿</button>
   </section>
+
+  <div id="background"></div>
+
+  <div id="postedScrean" class="posted_screen">
+
+  </div>
+
+  
+  <script src="../js/webapp.js"></script>
 </body>
 </html>
