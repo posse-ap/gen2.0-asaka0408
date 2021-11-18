@@ -12,7 +12,67 @@ function closeModal() {
   background.style.display ='none';
 }
 
+const postedContainer = document.getElementById('postedContainer');
 
+function showPosted() {
+  postedContainer.style.display = 'block';
+  background.style.display = 'block';
+}
+function closePosted() {
+  postedContainer.style.display = 'none';
+  background.style.display ='none';
+}
+
+
+
+$(".modal_record_and_post_btn").on("click", function(){
+  $("#overlay").fadeIn(500); //二度押しを防ぐloading表示
+  setTimeout(function(){
+    $("#overlay").fadeOut(500);
+    closeModal();
+    showPosted();
+  },3000);
+});
+
+var dataLabelPlugin = {
+  afterDatasetsDraw: function (chart, easing) {
+      // To only draw at the end of animation, check for easing === 1
+      var ctx = chart.ctx;
+
+      chart.data.datasets.forEach(function (dataset, i) {
+          var dataSum = 0;
+          dataset.data.forEach(function (element){
+              dataSum += element;
+          });
+
+          var meta = chart.getDatasetMeta(i);
+          if (!meta.hidden) {
+              meta.data.forEach(function (element, index) {
+                  // Draw the text in black, with the specified font
+                  ctx.fillStyle = 'rgb(255, 255, 255)';
+
+                  var fontSize = 12;
+                  var fontStyle = 'normal';
+                  var fontFamily = 'Helvetica Neue';
+                  ctx.font = Chart.helpers.fontString(fontSize, fontStyle, fontFamily);
+
+                  // Just naively convert to string for now
+                  var labelString = chart.data.labels[index];
+                  var dataString = (Math.round(dataset.data[index] / dataSum * 1000)/10).toString() + "%";
+
+                  // Make sure alignment settings are correct
+                  ctx.textAlign = 'center';
+                  ctx.textBaseline = 'middle';
+
+                  var padding = 5;
+                  var position = element.tooltipPosition();
+                  // ctx.fillText(labelString, position.x, position.y - (fontSize / 2) - padding);
+                  ctx.fillText(dataString, position.x, position.y + (fontSize / 2) - padding);
+              });
+          }
+      });
+  }
+};
 
   var ctx = document.getElementById("sircleGrafLanguages");
   var sircleGrafLanguages= new Chart(ctx, {
@@ -44,7 +104,8 @@ function closeModal() {
           bottom: 50
         }
       }
-    }
+    },
+    plugins: [dataLabelPlugin],
   });
 
   var ctx = document.getElementById("sircleGrafContents");
@@ -82,7 +143,8 @@ function closeModal() {
           bottom: 120
         }
       }
-    }
+    },
+    plugins: [dataLabelPlugin],
   });
 
 
@@ -143,7 +205,40 @@ function closeModal() {
       },
     }
   });
- 
 
+
+  //ツイッターに投稿
+
+    document.getElementById("modalFormAnchor").addEventListener('click', function(event) {
+      if(document.modal_form.tweet.checked) {
+
+        event.preventDefault();
+        var left = Math.round(window.screen.width / 2 - 275);
+        var top = (window.screen.height > 420) ? Math.round(window.screen.height / 2 - 210) : 0;
+        window.open(
+            "https://twitter.com/intent/tweet?text=" + encodeURIComponent(document.getElementById("twitter").value),
+            null,
+            "scrollbars=yes,resizable=yes,toolbar=no,location=yes,width=550,height=420,left=" + left + ",top=" + top);
+      }
+  });
+  
+
+//ラジオボタンをトグル式にする
+
+  var remove = 0; //選択されていないと言う意味
+
+function radioDeselection(already, numeric) {
+  if(remove == numeric) { //引数を設置してて、選択されているときは０でない数字が入る
+    already.checked = false; //選択されたものを解除する
+    remove = 0; //選択されていないという意味にする
+  } else {
+    remove = numeric; //そのまま選択させて、選択状態trueを示す数字を代入
+  }
+}
 
   
+
+
+
+
+
