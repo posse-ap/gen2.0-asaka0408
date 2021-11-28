@@ -331,9 +331,17 @@ body {
   z-index: 2;
 }
 
+.sp_record_and_post_btn {
+  display: none;
+}
+
 
 @media screen and (max-width: 480px) {
 	/* 480px以下に適用されるCSS（スマホ用） */
+  .header_record_and_post_btn {
+    display: none;
+  }
+
   .main_container {
     margin: 0 auto;
     width: 95%;
@@ -398,4 +406,13 @@ body {
     width: 90%;
   }
 
+  .sp_record_and_post_btn {
+    display: block;
+    margin: 30px auto;
+    padding: 2%;
+    width: 40%;
+    border-radius: 30px;
+    color: white;
+    background: linear-gradient(to right,#0f71bc,#3ccfff);
+  }
 }

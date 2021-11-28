@@ -7,6 +7,7 @@ function showModal() {
   background.style.display = 'block';
 }
 
+
 function closeModal() {
   modalContainer.style.display ='none';
   background.style.display ='none';
@@ -96,6 +97,7 @@ var dataLabelPlugin = {
     options: {
       legend: {position: 'bottom'},
       maintainAspectRatio: false,
+      responsive: true,
       layout: { //レイアウトの設定
         padding: {
           left: 30,
@@ -123,6 +125,7 @@ var dataLabelPlugin = {
       }]
     },
     options: {
+      // responsive: true,
       legend: {
         position: 'bottom',
         layout: {
@@ -167,6 +170,7 @@ var dataLabelPlugin = {
       ]
     },
     options: {
+      // responsive: true,
       legend: {
         display: false
      },
