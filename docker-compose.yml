@@ -20,12 +20,15 @@ services:
       - db
 
   db:
-    image: mysql:5.7
+    image: mysql:latest
     ports:
       - 13306:3306
     volumes:
       - ./mysql/data:/var/lib/mysql
     environment:
+      MYSQL_DATABASE: quizy
+      MYSQL_USER: asaka
+      MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: secret
 
   phpmyadmin:
