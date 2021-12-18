@@ -11,10 +11,11 @@ services:
       - php
 
   php:
-    image: php:7-fpm
+    # image: php:7-fpm
     build: ./php
     volumes:
       - ./src:/var/www/html
+      - ./php/php.ini:/usr/local/etc/php/conf.d/php.ini
     stdin_open: true # ←を追加
     depends_on:
       - db
@@ -25,6 +26,8 @@ services:
       - 13306:3306
     volumes:
       - ./mysql/data:/var/lib/mysql
+      - ./mysql/my.conf:/etc/mysql/conf.d
+      - ./mysql/sql:/docker-entrypoint-initdb.d
     environment:
       MYSQL_DATABASE: quizy
       MYSQL_USER: asaka
