@@ -1,0 +1,128 @@
+.question_area {
+    margin-top: 5%;
+    margin-left: 18%;
+    font-weight: 600;
+}
+
+.question_area:after { 
+    display: block;
+    margin-top: 15px;
+    width:  120px;
+    height: 2px;
+    background-color: #00ab36;
+    content: ''; 
+}
+/*:afterは htmlで書かなくてもそのクラスの後ろに装飾をする
+/*display:blockは表示する！
+/*margin外側の余白、他との距離を作るもの
+/*margin-topは上にだけ余白を作るといういみ
+/*width大きさ,線の長さ
+/*heigh高さ
+/*content要素の直前直後に文字列や画像を入れられる、：afterを使うときは必ず入れる必要あり
+/*paddingボックスの中の内側の余白
+
+/* 選択肢のボックスを3個並べて表示 */
+
+/* .selection_area{
+    margin: 0 auto;
+} */
+
+
+.images{
+    display:block;
+    width: 80%;
+    margin:auto
+}
+
+li {
+    list-style-type: none;
+    border: 1px solid #ebebeb;
+    padding:20px 13px 13px 13px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 3px 2px -2px rgb(0 0 0 /13%); 
+    text-align: left;
+    margin-left: 18%;
+    height: 20px;
+    width: 60%;
+
+}
+
+.correct_selection {
+    background-color: #287dff;
+    color: white;
+}
+
+.correct_box {
+    display: none;
+    background-color:hsl(0, 0%, 93%);
+    padding: 15px;
+    height: 85px;
+    margin: 0 19%;
+    
+}
+
+.text_seikai{
+    /* display:none; */
+    font-weight: 600;
+}
+
+.text_seikai:after{
+    display: block;
+    margin-top: 0px;
+    width:  50px;
+    height: 2px;
+    background-color:#287dff;
+    content: ''; 
+    margin: 5px 0 10px 0;
+}
+
+.fail_selections{
+    background-color: red;
+    color: white;
+}
+
+.fail_box{
+    display: none;
+    background-color:hsl(0, 0%, 93%);
+    padding: 15px;
+    height: 85px;
+    margin: 0 19%;
+}
+
+.text_fuseikai{
+    /* display:none; */
+    font-weight: 600;
+}
+
+.text_fuseikai:after{
+    display: block;
+    margin-top: 0px;
+    width:  60px;
+    height: 2px;
+    background-color:red;
+    content: ''; 
+    margin: 5px 0 10px 0;
+}
+
+/* .question{
+    margin: 10px 0 10px 0;
+} */
+
+/* 真ん中に寄せる系 */
+.container {
+     margin:0 auto; 
+     width:70%;
+} /*divで親要素を作ってその親要素にcontainerという名前をつける。このふたつはどっちかを書かないと左寄りになってたからどっちも必要 *
+
+/* font-familyは字体 */
+  /* margin:0 autoだと上下はゼロ、左右はいい感じ
+   margin:0 0 0 0 だと全部ゼロ、順番は上から時計回り */
+   /* text-aline: left は文字を左詰めにする */
+    /* borderは薄い枠
+    font-weightは文字の太さ */
+    /* cursor :pointを使うと文字に近づいた時に指マークに変わって押せることがわかりやすい。 */
+
+     /* :hover{
+         opacity: 50px;
+     } はカーソールが通ると半透明になる*/
