@@ -34,31 +34,31 @@ let quizAnswers = [
 
 
 
-let main = '';
-for (let i = 0; i < quizSet.length; i++) {
-    main += '<div id="quiz" class="question">'
+// let main = '';
+// for (let i = 0; i < quizSet.length; i++) {
+//     main += '<div id="quiz" class="question">'
     
-    + '<h3 id="questionArea" class="question_area">' + [i + 1] + '.この地名はなんて読む？</h3>'
+//     + '<h3 id="questionArea" class="question_area">' + [i + 1] + '.この地名はなんて読む？</h3>'
     
-    + '<img class="images" src=../img/' + i + '.png alt="画像">'
-    + '<ul id="worksFigure" style="display: flex;flex-direction: column">'
-    + '<li id="correctSelection' + [i] + '"  onclick = "checkAnswer(' + [i] + ',0,0)">' + quizSet[i][0] + '</li>'
-    + '<li id="failSelection1' + [i] + '"   onclick = "checkAnswer(' + [i] + ',1,0)">' + quizSet[i][1] + '</li>'
-    + '<li id="failSelection2' + [i] + '"   onclick = "checkAnswer(' + [i] + ',2,0)">' + quizSet[i][2] + '</li>'
-    + '</ul>'
-    + '<div id="correctBox' + i + '" class="correct_box"  onclick = "checkAnswer(' + [i + 1] + ',0,0)">'
-    + '<p class="text_seikai">正解！</p>'
-    + '<p>正解は「' + quizAnswers[i] + '」です</p>'
-    + '</div>'
-    + '<div id="failBox' + i + '" class="fail_box"  onclick = "checkAnswer(' + [i + 1] + ',0,0)">'
-    + '<p class="text_fuseikai">不正解。</p>'
-    + '<p>正解は「' + quizAnswers[i] + '」です</p>'
-    + '</div>'
+//     + '<img class="images" src=../img/' + i + '.png alt="画像">'
+//     + '<ul id="worksFigure" style="display: flex;flex-direction: column">'
+//     + '<li id="correctSelection' + [i] + '"  onclick = "checkAnswer(' + [i] + ',0,0)">' + quizSet[i][0] + '</li>'
+//     + '<li id="failSelection1' + [i] + '"   onclick = "checkAnswer(' + [i] + ',1,0)">' + quizSet[i][1] + '</li>'
+//     + '<li id="failSelection2' + [i] + '"   onclick = "checkAnswer(' + [i] + ',2,0)">' + quizSet[i][2] + '</li>'
+//     + '</ul>'
+//     + '<div id="correctBox' + i + '" class="correct_box"  onclick = "checkAnswer(' + [i + 1] + ',0,0)">'
+//     + '<p class="text_seikai">正解！</p>'
+//     + '<p>正解は「' + quizAnswers[i] + '」です</p>'
+//     + '</div>'
+//     + '<div id="failBox' + i + '" class="fail_box"  onclick = "checkAnswer(' + [i + 1] + ',0,0)">'
+//     + '<p class="text_fuseikai">不正解。</p>'
+//     + '<p>正解は「' + quizAnswers[i] + '」です</p>'
+//     + '</div>'
     
-    + '</div>'
-    container.innerHTML = main;
+//     + '</div>'
+//     container.innerHTML = main;
     
-}
+// }
 
 
 

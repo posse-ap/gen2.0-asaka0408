@@ -16,7 +16,7 @@
 DROP TABLE IF EXISTS prefectures;
 CREATE TABLE prefectures (
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-  name VARCHAR(225) NOT NULL
+  prefecture_name VARCHAR(225) NOT NULL
 );
 
 DROP TABLE IF EXISTS questions;
@@ -24,35 +24,36 @@ CREATE TABLE questions (
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   prefecture_id INT NOT NULL, 
   `order` INT NOT NULL,
-  name VARCHAR(255) NOT NULL
+  question_name VARCHAR(255) NOT NULL
 );
 
 DROP TABLE IF EXISTS selections;
 CREATE TABLE selections (
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   question_id INT NOT NULL,
-  name VARCHAR(225) NOT NULL,
+  selection_name VARCHAR(225) NOT NULL,
   is_correct boolean
 );
 
-INSERT INTO prefectures (id, name) VALUES (1, '東京'),(2, '広島');
+INSERT INTO prefectures (id, prefecture_name) VALUES 
+(1, '東京'),(2, '広島');
 
-INSERT INTO questions (id, prefecture_id, `order`, name) VALUES 
+INSERT INTO questions (id, prefecture_id, `order`, question_name) VALUES 
 (1, 1, 1, '高輪'),
-(2, 1, 2, '亀戸');
-(1, 2, 1, '向洋');
+(2, 1, 2, '亀戸'),
+(3, 2, 1, '向洋');
 -- order必要？
 
-INSERT INTO selections (id, question_id, name, is_correct) VALUES 
+INSERT INTO selections (id, question_id, selection_name, is_correct) VALUES 
 (1, 1, 'たかなわ', true),
 (2, 1, 'こうわ', false),
-(3, 1, 'たかわ', false);
-(4, 2, 'かめいど', true);
-(5, 2, 'かめと', false);
-(6, 2, 'かめど', false);
-(7, 1, 'あああ', true);
-(8, 1, 'わあ', false);
-(9, 1, 'やあ', false);
+(3, 1, 'たかわ', false),
+(4, 2, 'かめいど', true),
+(5, 2, 'かめと', false),
+(6, 2, 'かめど', false),
+(7, 3, 'むかいなだ', true),
+(8, 3, 'むこうひら', false),
+(9, 3, 'むきひら', false);
 
 
 -- desc prefectures; カラムを確認できるsqlコマンド
