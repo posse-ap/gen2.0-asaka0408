@@ -25,7 +25,7 @@ if (isset($_GET["id"])) {
 }
 
 $prefectures_value = "SELECT * FROM prefectures WHERE id = $id";
-$questions_value =  "SELECT * FROM questions INNER JOIN prefectures ON questions.prefecture_id = $id";
+$questions_value =  "SELECT * FROM questions INNER JOIN prefectures ON questions.prefecture_id = prefectures.id where prefecture_id = $id";
 $selections_value = "SELECT * FROM selections INNER JOIN questions ON selections.question_id = questions.id where prefecture_id = $id";
 
 $prefectures = $db->query($prefectures_value)->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_UNIQUE);
@@ -49,7 +49,8 @@ $selections = $db->query($selections_value)->fetchAll(PDO::FETCH_ASSOC | PDO::FE
 
 <body>
   <div id="container">
-    <?php foreach ($questions as $question): ?>
+    <?php foreach ($questions as $question):?>
+
       <!-- 中身を増やしたときの汎用性 -->
 
     <h3> <?php echo $question['order'];?> .この地名はなんて読む？</h3>
@@ -62,7 +63,47 @@ $selections = $db->query($selections_value)->fetchAll(PDO::FETCH_ASSOC | PDO::FE
     <?php endforeach; ?>
   </div>
 
-  <script src="./js/quizy_3.js"></script>
+  <!-- <script src="./js/quizy_3.js"></script> -->
+ 
+  <table>
+        <!-- <tr>
+          <th>big_quiz_id</th> 
+          <th>big_quiz_name</th>
+          <th>image_id</th>
+          <th>image_name</th>
+        </tr>
+        <?php foreach ($prefectures as $value): ?>
+       <tr>
+        <td>
+        <?php echo $value['id']; ?> 
+        </td>
+        <td>
+         <?php echo $value['name']; ?>
+        </td>
+        </td>
+      </tr>
+      <?php endforeach ?>
+      <th><br></th> -->
+      <tr>
+          <th>image_id</th> 
+          <th>image_name</th>
+          <th>choice_name</th>
+          <th>choice_valid</th>
+      </tr>
+      
+      <?php foreach ($questions as $inner_value): ?>
+       <tr>
+        <td>
+         <?php echo $inner_value['prefecture_id'] ?>
+        </td>
+        <td>
+         <?php echo $inner_value['order'] ?>
+        </td>
+        <td>
+         <?php echo $inner_value['question_name'] ?>
+        </td>
+        <?php endforeach ?>
+  </table>
 </body>
 </html>
 
