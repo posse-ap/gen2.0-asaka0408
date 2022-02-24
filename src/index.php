@@ -33,6 +33,7 @@ $questions = $db->query($questions_value)->fetchAll(PDO::FETCH_ASSOC | PDO::FETC
 $selections = $db->query($selections_value)->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_UNIQUE);
 
 
+
 ?>
 
 
@@ -50,60 +51,26 @@ $selections = $db->query($selections_value)->fetchAll(PDO::FETCH_ASSOC | PDO::FE
 <body>
   <div id="container">
     <?php foreach ($questions as $question):?>
-
       <!-- 中身を増やしたときの汎用性 -->
-
     <h3> <?php echo $question['order'];?> .この地名はなんて読む？</h3>
     <img src="./img/<?php echo $question['order'];?>.png" alt="質問内容画像">
     <ul>
-      <?php foreach ($selections as $index => $selection): ?>
-      <li><?php echo $selection['selection_name']; ?></li>
+      <?php $tmp = array_filter($selections, function($v) {
+              return $v['question_id'] == 1;
+            });
+
+            $result = array_map(function($v) {
+              return $v['selection_name'] ;
+            }, $tmp);
+
+            foreach ($result as $index => $value):?>
+      <li><?php echo $value; ?></li>
       <?php endforeach; ?>
     </ul>
     <?php endforeach; ?>
   </div>
 
   <!-- <script src="./js/quizy_3.js"></script> -->
- 
-  <table>
-        <!-- <tr>
-          <th>big_quiz_id</th> 
-          <th>big_quiz_name</th>
-          <th>image_id</th>
-          <th>image_name</th>
-        </tr>
-        <?php foreach ($prefectures as $value): ?>
-       <tr>
-        <td>
-        <?php echo $value['id']; ?> 
-        </td>
-        <td>
-         <?php echo $value['name']; ?>
-        </td>
-        </td>
-      </tr>
-      <?php endforeach ?>
-      <th><br></th> -->
-      <tr>
-          <th>image_id</th> 
-          <th>image_name</th>
-          <th>choice_name</th>
-          <th>choice_valid</th>
-      </tr>
-      
-      <?php foreach ($questions as $inner_value): ?>
-       <tr>
-        <td>
-         <?php echo $inner_value['prefecture_id'] ?>
-        </td>
-        <td>
-         <?php echo $inner_value['order'] ?>
-        </td>
-        <td>
-         <?php echo $inner_value['question_name'] ?>
-        </td>
-        <?php endforeach ?>
-  </table>
 </body>
 </html>
 
