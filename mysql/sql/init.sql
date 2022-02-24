@@ -42,7 +42,7 @@ INSERT INTO questions (id, prefecture_id, `order`, question_name) VALUES
 (1, 1, 1, '高輪'),
 (2, 1, 2, '亀戸'),
 (3, 2, 1, '向洋');
--- order必要？
+
 
 INSERT INTO selections (id, question_id, selection_name, is_correct) VALUES 
 (1, 1, 'たかなわ', true),

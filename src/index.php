@@ -31,7 +31,11 @@ $selections_value = "SELECT * FROM selections INNER JOIN questions ON selections
 $prefectures = $db->query($prefectures_value)->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_UNIQUE);
 $questions = $db->query($questions_value)->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_UNIQUE);
 $selections = $db->query($selections_value)->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_UNIQUE);
+
+
 ?>
+
+
 
 <html lang="ja">
 <head>
@@ -43,40 +47,33 @@ $selections = $db->query($selections_value)->fetchAll(PDO::FETCH_ASSOC | PDO::FE
     <link rel="stylesheet" href="../css/kuizy.css">
 </head>
 
-
 <body>
-    <div id="container">
-    <?php for ($questions["order"]=1; $questions["order"] < 3; $questions["order"]++) { 
-    
-  echo  '<div id="quiz" class="question">
-          <h3 id="questionArea" class="question_area">' . $questions["order"] .'.この地名はなんて読む？</h3>
-          <img class="images" src=../img/' . $questions["order"] . '.png alt="画像">
-       
-          <ul id="worksFigure" style="display: flex;flex-direction: column">';
-           
-          foreach ($selections as $selection) {
-            echo '<li id="correctSelection' . $questions["order"] . '" onclick = "checkAnswer(' . $questions["order"] . ',1,0)">' . $selection["selection_name"] . '</li>' .PHP_EOL; 
-        }
-        
+  <div id="container">
+    <?php foreach ($questions as $question): ?>
+      <!-- 中身を増やしたときの汎用性 -->
 
-  echo   '</ul>
-        <div id="correctBox' . $questions['order'] . '" class="correct_box"  onclick = "checkAnswer(' . $questions["order"] . ',0,0)">
+    <h3> <?php echo $question['order'];?> .この地名はなんて読む？</h3>
+    <img src="./img/<?php echo $question['order'];?>.png" alt="質問内容画像">
+    <ul>
+      <?php foreach ($selections as $index => $selection): ?>
+      <li><?php echo $selection['selection_name']; ?></li>
+      <?php endforeach; ?>
+    </ul>
+    <?php endforeach; ?>
+  </div>
+
+  <script src="./js/quizy_3.js"></script>
+</body>
+</html>
+
+<!-- <div id="correctBox' . $questions['order'] . '" class="correct_box"  onclick = "checkAnswer(' . $questions["order"] . ',0,0)">
           <p class="text_seikai">正解！</p>
           <p>正解は「' . $questions['question_name'] . '」です</p>
         </div>
         <div id="failBox' . $questions["order"] . '" class="fail_box"  onclick = "checkAnswer(' . $questions["order"] . ',0,0)">
           <p class="text_fuseikai">不正解。</p>
           <p>正解は「' . $questions['question_name'] . '」です</p>
-        </div>
-    
-      </div>';
-}
-?>
-      
-         
-          
-    </div>
-    
-    <script src="../js/quizy_3.js"></script>
-</body>
-</html>
+        </div> -->
+
+        <!-- echo '<li id="correctSelection' . $questions["order"] . '" onclick = "checkAnswer(' . $q
+       
