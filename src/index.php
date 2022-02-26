@@ -21,18 +21,18 @@ try {
 
 if (isset($_GET["id"])) {
   $id = $_GET["id"];
-  // echo $id;
+ 
 }
+
+echo $id;
 
 $prefectures_value = "SELECT * FROM prefectures WHERE id = $id";
 $questions_value =  "SELECT * FROM questions INNER JOIN prefectures ON questions.prefecture_id = prefectures.id where prefecture_id = $id";
 $selections_value = "SELECT * FROM selections INNER JOIN questions ON selections.question_id = questions.id where prefecture_id = $id";
 
-$prefectures = $db->query($prefectures_value)->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_UNIQUE);
-$questions = $db->query($questions_value)->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_UNIQUE);
-$selections = $db->query($selections_value)->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_UNIQUE);
-
-
+$prefectures = $db->query($prefectures_value)->fetchAll();
+$questions = $db->query($questions_value)->fetchAll();
+$selections = $db->query($selections_value)->fetchAll();
 
 ?>
 
@@ -55,19 +55,22 @@ $selections = $db->query($selections_value)->fetchAll(PDO::FETCH_ASSOC | PDO::FE
     <h3> <?php echo $question['order'];?> .この地名はなんて読む？</h3>
     <img src="./img/<?php echo $question['order'];?>.png" alt="質問内容画像">
     <ul>
-      <?php $tmp = array_filter($selections, function($v) {
-              return $v['question_id'] == 1;
+      <?php for($i=1; $i<4; $i++): 
+              $tmp = array_filter($selections, function($v) {
+              return $v['question_id'] == $i;
+              // ＝＝１だと全部高輪になるけど$questionsはUndefinedがでるなんで？？？？？？？？？グローバルとかローカルてきな？？？？これもエラーなのはなんで？？？？？？？
+              // for文使えばindex使える
             });
 
             $result = array_map(function($v) {
               return $v['selection_name'] ;
             }, $tmp);
 
-            foreach ($result as $index => $value):?>
+            foreach ($result as $index => $value):?>   
       <li><?php echo $value; ?></li>
-      <?php endforeach; ?>
+      <?php endforeach;?>
     </ul>
-    <?php endforeach; ?>
+    <?php endfor;?>
   </div>
 
   <!-- <script src="./js/quizy_3.js"></script> -->
