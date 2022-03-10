@@ -1,3 +1,7 @@
+DROP SCHEMA IF EXISTS asaka;
+CREATE SCHEMA asaka;
+USE asaka;
+
 -- DROP TABLE IF EXISTS choices; もしあったら消してね
 -- CREATE TABLE choices ( テーブル作りますよ
 -- id INT AUTO_INCREMENT NOT NULL PRIMARY KEY, １番から自動的にIDをふってくれる。自分で振ってもいけど、勝手にやってくれたほうがありがたいよね.
@@ -19,41 +23,51 @@ CREATE TABLE prefectures (
   prefecture_name VARCHAR(225) NOT NULL
 );
 
+INSERT INTO prefectures SET prefecture_name='東京の難読地名クイズ';
+INSERT INTO prefectures SET prefecture_name='広島の難読地名クイズ';
+
 DROP TABLE IF EXISTS questions;
 CREATE TABLE questions (
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   prefecture_id INT NOT NULL, 
-  `order` INT NOT NULL,
-  question_name VARCHAR(255) NOT NULL
+  image VARCHAR(255) NOT NULL
 );
+
+INSERT INTO questions SET prefecture_id=1, image='takanawa.png'
+INSERT INTO questions SET prefecture_id=2, image='kameido.png'
+INSERT INTO questions SET prefecture_id=3, image='mukainada.png'
 
 DROP TABLE IF EXISTS selections;
 CREATE TABLE selections (
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   question_id INT NOT NULL,
   selection_name VARCHAR(225) NOT NULL,
-  is_correct boolean
+  valid TINYINT(1) NOT NULL DEFAULT '0',
 );
 
-INSERT INTO prefectures (id, prefecture_name) VALUES 
-(1, '東京'),(2, '広島');
+INSERT INTO selections SET 
 
-INSERT INTO questions (id, prefecture_id, `order`, question_name) VALUES 
-(1, 1, 1, '高輪'),
-(2, 1, 2, '亀戸'),
-(3, 2, 1, '向洋');
+-- INSERT INTO prefectures (id, prefecture_name) VALUES 
+-- (1, '東京'),(2, '広島');
+
+-- INSERT INTO questions (id, prefecture_id, `order`, question_name) VALUES 
+-- (1, 1, 1, '高輪'),
+-- (2, 1, 2, '亀戸'),
+-- (3, 2, 1, '向洋');
 
 
-INSERT INTO selections (id, question_id, selection_name, is_correct) VALUES 
-(1, 1, 'たかなわ', true),
-(2, 1, 'こうわ', false),
-(3, 1, 'たかわ', false),
-(4, 2, 'かめいど', true),
-(5, 2, 'かめと', false),
-(6, 2, 'かめど', false),
-(7, 3, 'むかいなだ', true),
-(8, 3, 'むこうひら', false),
-(9, 3, 'むきひら', false);
+-- INSERT INTO selections (id, question_id, selection_name, is_correct) VALUES 
+-- (1, 1, 'たかなわ', true),
+-- (2, 1, 'こうわ', false),
+-- (3, 1, 'たかわ', false),
+-- (4, 2, 'かめいど', true),
+-- (5, 2, 'かめと', false),
+-- (6, 2, 'かめど', false),
+-- (7, 3, 'むかいなだ', true),
+-- (8, 3, 'むこうひら', false),
+-- (9, 3, 'むきひら', false);
+
+
 
 
 -- desc prefectures; カラムを確認できるsqlコマンド

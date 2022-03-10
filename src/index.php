@@ -24,7 +24,7 @@ if (isset($_GET["id"])) {
  
 }
 
-echo $id;
+// echo $id;
 
 $prefectures_value = "SELECT * FROM prefectures WHERE id = $id";
 $questions_value =  "SELECT * FROM questions INNER JOIN prefectures ON questions.prefecture_id = prefectures.id where prefecture_id = $id";
@@ -50,14 +50,16 @@ $selections = $db->query($selections_value)->fetchAll();
 
 <body>
   <div id="container">
-    <?php foreach ($questions as $question):?>
+    <?php foreach ($questions as $index => $question):?>
       <!-- 中身を増やしたときの汎用性 -->
     <h3> <?php echo $question['order'];?> .この地名はなんて読む？</h3>
     <img src="./img/<?php echo $question['order'];?>.png" alt="質問内容画像">
     <ul>
-      <?php for($i=1; $i<4; $i++): 
-              $tmp = array_filter($selections, function($v) {
-              return $v['question_id'] == $i;
+      <?php  
+      
+            
+            $tmp = array_filter($selections, function($v) {
+              return $v['question_id'] == 1;
               // ＝＝１だと全部高輪になるけど$questionsはUndefinedがでるなんで？？？？？？？？？グローバルとかローカルてきな？？？？これもエラーなのはなんで？？？？？？？
               // for文使えばindex使える
             });
@@ -66,13 +68,13 @@ $selections = $db->query($selections_value)->fetchAll();
               return $v['selection_name'] ;
             }, $tmp);
 
-            foreach ($result as $index => $value):?>   
+            foreach ($result as $value):?>   
       <li><?php echo $value; ?></li>
       <?php endforeach;?>
     </ul>
-    <?php endfor;?>
+    
   </div>
-
+  <?php endforeach ?>
   <!-- <script src="./js/quizy_3.js"></script> -->
 </body>
 </html>
