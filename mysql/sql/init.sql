@@ -45,7 +45,18 @@ CREATE TABLE selections (
   valid TINYINT(1) NOT NULL DEFAULT '0',
 );
 
-INSERT INTO selections SET 
+INSERT INTO selections
+  (question_id, selection_name, valid)
+VALUES
+  (1, 'たかなわ', 1),
+  (1, 'たかわ', 0),
+  (1, 'こうわ', 0),
+  (2, 'かめいど', 1),
+  (2, 'かめど', 0),
+  (2, 'かめと', 0),
+  (3, 'むこうひら', 0),
+  (3, 'むかいなだ', 1),
+  (3, 'むきひら', 0),
 
 -- INSERT INTO prefectures (id, prefecture_name) VALUES 
 -- (1, '東京'),(2, '広島');
