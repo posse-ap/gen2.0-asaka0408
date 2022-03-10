@@ -1,13 +1,13 @@
+<?php
+require('../dbconnect.php');
 
+if (isset($_GET['id'])) {
+  $id = htmlspecialchars($_GET['id']);
 
-// $stmt = $pdo->prepare("SELECT * FROM prefectures INNER JOIN questions ON prefectures.id = questions.prefecture_id"); //questions tableから取ってきてね
+  $stmt = $db->prepare('SELECT * FROM questions WHERE prefecture_id = ?');
+  $stmt = $db->execute(array($id));
 
-
-
-
-
-if (isset($_GET["id"])) {
-  $id = $_GET["id"];
+   
  
 }
 
