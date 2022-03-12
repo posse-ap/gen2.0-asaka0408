@@ -1,7 +1,3 @@
-DROP SCHEMA IF EXISTS asaka;
-CREATE SCHEMA asaka;
-USE asaka;
-
 -- DROP TABLE IF EXISTS choices; もしあったら消してね
 -- CREATE TABLE choices ( テーブル作りますよ
 -- id INT AUTO_INCREMENT NOT NULL PRIMARY KEY, １番から自動的にIDをふってくれる。自分で振ってもいけど、勝手にやってくれたほうがありがたいよね.
@@ -33,16 +29,16 @@ CREATE TABLE questions (
   image VARCHAR(255) NOT NULL
 );
 
-INSERT INTO questions SET prefecture_id=1, image='takanawa.png'
-INSERT INTO questions SET prefecture_id=2, image='kameido.png'
-INSERT INTO questions SET prefecture_id=3, image='mukainada.png'
+INSERT INTO questions SET prefecture_id=1, image='takanawa.png';
+INSERT INTO questions SET prefecture_id=1, image='kameido.png';
+INSERT INTO questions SET prefecture_id=2, image='mukainada.png';
 
 DROP TABLE IF EXISTS selections;
 CREATE TABLE selections (
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   question_id INT NOT NULL,
   selection_name VARCHAR(225) NOT NULL,
-  valid TINYINT(1) NOT NULL DEFAULT '0',
+  valid TINYINT(1) NOT NULL DEFAULT '0'
 );
 
 INSERT INTO selections
@@ -56,7 +52,7 @@ VALUES
   (2, 'かめと', 0),
   (3, 'むこうひら', 0),
   (3, 'むかいなだ', 1),
-  (3, 'むきひら', 0),
+  (3, 'むきひら', 0);
 
 -- INSERT INTO prefectures (id, prefecture_name) VALUES 
 -- (1, '東京'),(2, '広島');
