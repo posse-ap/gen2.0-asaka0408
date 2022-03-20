@@ -3,7 +3,6 @@ CREATE TABLE users (
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   name VARCHAR(255) NOT NULL
 );
-
 INSERT INTO users SET name='eddy';
 
 
@@ -29,7 +28,6 @@ CREATE TABLE contents (
   name VARCHAR(255) NOT NULL,
   date_id INT NOT NULL
 );
-
 INSERT INTO contents
   (name, date_id)
 VALUES
@@ -41,6 +39,7 @@ VALUES
   ('ドットインストール', 3),
   ('N予備校', 4),
   ('ドットインストール', 4);
+
 
 
 DROP TABLE IF EXISTS languages;
