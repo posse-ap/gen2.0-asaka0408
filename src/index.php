@@ -1,4 +1,7 @@
 <?php require("./dbconnect.php");
+
+$stmt = $db->prepare('SELECT * FROM dates where date = ?');
+$stmt->execute(array($))
 ?>
 
 
